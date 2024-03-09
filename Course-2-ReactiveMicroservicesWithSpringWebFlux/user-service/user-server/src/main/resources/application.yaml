@@ -1,0 +1,10 @@
+server:
+  port: 8092
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/user-service
+    username: admin
+    password: admin
+logging:
+  level:
+    org.springframework.r2dbc: DEBUG
