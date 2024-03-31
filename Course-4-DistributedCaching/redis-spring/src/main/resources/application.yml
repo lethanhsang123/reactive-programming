@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: redis-spring
+city:
+  service:
+    uri: http://localhost:3030/open-city-api/

@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: redis-performance
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/test?schema=test
+    username: admin
+    password: 1
