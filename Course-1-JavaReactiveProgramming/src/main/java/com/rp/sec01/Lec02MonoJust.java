@@ -11,8 +11,8 @@ public class Lec02MonoJust {
 
         System.out.println(just);
 
-        // The number one rule in reactive programming is nothing happens until you subscribe
-        // Subscribe
+        // The number one rule in reactive programming is nothing happens until you subscriber
+        // Subscriber
         just.subscribe(System.out::println);
 
 
