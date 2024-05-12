@@ -1,9 +1,9 @@
-package com.vinsguru.userserver.service.impl;
+package com.vinsguru.userserver.services.impl;
 
 import com.vinsguru.userclient.dto.request.UserDto;
-import com.vinsguru.userserver.repository.UserRepository;
-import com.vinsguru.userserver.service.UserService;
-import com.vinsguru.userserver.util.EntityDtoUtil;
+import com.vinsguru.userserver.repositories.UserRepository;
+import com.vinsguru.userserver.services.UserService;
+import com.vinsguru.userserver.utils.EntityDtoUtil;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
