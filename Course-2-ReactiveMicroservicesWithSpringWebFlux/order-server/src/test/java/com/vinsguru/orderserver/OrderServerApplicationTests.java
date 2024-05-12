@@ -1,10 +1,10 @@
-//package com.vinsguru.userserver;
+//package com.vinsguru.orderserver;
 //
 //import org.junit.jupiter.api.Test;
 //import org.springframework.boot.test.context.SpringBootTest;
 //
 //@SpringBootTest
-//class UsersServerApplicationTests {
+//class OrderServerApplicationTests {
 //
 //    @Test
 //    void contextLoads() {

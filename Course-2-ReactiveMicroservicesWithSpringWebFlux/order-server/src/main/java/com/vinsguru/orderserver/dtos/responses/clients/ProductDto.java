@@ -1,10 +1,8 @@
-package com.vinsguru.productclient.dto;
+package com.vinsguru.orderserver.dtos.responses.clients;
 
 import lombok.Data;
-import lombok.ToString;
 
 @Data
-@ToString
 public class ProductDto {
     private String id;
     private String description;

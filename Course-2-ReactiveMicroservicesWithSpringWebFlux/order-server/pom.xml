@@ -3,30 +3,30 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.vinsguru</groupId>
-        <artifactId>user-service</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>user-server</artifactId>
-    <name>user-server</name>
+    <artifactId>order-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>order-server</name>
+    <description>order-server</description>
 
     <properties>
         <user.client-version>0.0.1-SNAPSHOT</user.client-version>
+        <product.client-version>0.0.1-SNAPSHOT</product.client-version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>r2dbc-postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -39,15 +39,27 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>com.vinsguru</groupId>
-            <artifactId>user-client</artifactId>
-            <version>${user.client-version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.vinsguru</groupId>-->
+<!--            <artifactId>user-client</artifactId>-->
+<!--            <version>${user.client-version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.vinsguru</groupId>-->
+<!--            <artifactId>product-client</artifactId>-->
+<!--            <version>${product.client-version}</version>-->
+<!--        </dependency>-->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -64,5 +76,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

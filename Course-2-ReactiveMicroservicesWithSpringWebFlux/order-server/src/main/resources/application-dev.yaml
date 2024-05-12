@@ -1,0 +1,25 @@
+product:
+  service:
+    url: ${PRODUCT_SERVICE_URL}
+user:
+  service:
+    url: ${USER_SERVICE_URL}
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: ${PORT}
+  servlet:
+    context-path: /order-service/api
