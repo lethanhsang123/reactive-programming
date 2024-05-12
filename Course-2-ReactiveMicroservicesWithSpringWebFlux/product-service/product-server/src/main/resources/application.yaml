@@ -1,7 +1,10 @@
 server:
   port: 8091
-
+  servlet:
+    context-path: /product-service/api
 spring:
+  application:
+    name: product-service
   data:
     mongodb:
       host: localhost

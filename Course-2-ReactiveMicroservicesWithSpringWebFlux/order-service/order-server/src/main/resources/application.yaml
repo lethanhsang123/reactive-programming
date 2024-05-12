@@ -4,7 +4,6 @@ product:
 user:
   service:
     url: http://localhost:8092/
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/order-service
@@ -18,3 +17,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  application:
+    name: order-service
+server:
+  port: 8080
+  servlet:
+    context-path: /order-service/api

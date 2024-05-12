@@ -1,4 +1,4 @@
-package com.vinsguru.userserver.service;
+package com.vinsguru.userserver.services;
 
 import com.vinsguru.userclient.dto.request.UserDto;
 import reactor.core.publisher.Flux;

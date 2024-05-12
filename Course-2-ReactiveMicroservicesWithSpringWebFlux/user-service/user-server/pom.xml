@@ -6,9 +6,15 @@
         <groupId>com.vinsguru</groupId>
         <artifactId>user-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
+
     <artifactId>user-server</artifactId>
+    <name>user-server</name>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <user.client-version>0.0.1-SNAPSHOT</user.client-version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -39,9 +45,26 @@
         <dependency>
             <groupId>com.vinsguru</groupId>
             <artifactId>user-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${user.client-version}</version>
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

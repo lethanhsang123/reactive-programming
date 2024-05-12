@@ -6,8 +6,9 @@
         <groupId>com.vinsguru</groupId>
         <artifactId>user-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>user-client</artifactId>
+    <name>user-client</name>
+    <version>0.0.1-SNAPSHOT</version>
 
 </project>

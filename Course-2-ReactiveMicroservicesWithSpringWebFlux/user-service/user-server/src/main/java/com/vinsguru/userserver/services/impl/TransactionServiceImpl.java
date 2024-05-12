@@ -1,13 +1,13 @@
-package com.vinsguru.userserver.service.impl;
+package com.vinsguru.userserver.services.impl;
 
 import com.vinsguru.userclient.dto.request.TransactionRequestDto;
 import com.vinsguru.userclient.dto.response.TransactionResponseDto;
 import com.vinsguru.userclient.dto.response.TransactionStatus;
-import com.vinsguru.userserver.entiry.UserTransaction;
-import com.vinsguru.userserver.repository.UserRepository;
-import com.vinsguru.userserver.repository.UserTransactionRepository;
-import com.vinsguru.userserver.service.TransactionService;
-import com.vinsguru.userserver.util.EntityDtoUtil;
+import com.vinsguru.userserver.entities.UserTransaction;
+import com.vinsguru.userserver.repositories.UserRepository;
+import com.vinsguru.userserver.repositories.UserTransactionRepository;
+import com.vinsguru.userserver.services.TransactionService;
+import com.vinsguru.userserver.utils.EntityDtoUtil;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
