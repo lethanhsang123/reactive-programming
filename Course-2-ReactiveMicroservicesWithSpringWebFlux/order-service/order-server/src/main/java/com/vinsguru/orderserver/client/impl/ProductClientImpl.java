@@ -6,6 +6,7 @@ import com.vinsguru.productclient.service.ProductService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -22,5 +23,13 @@ public class ProductClientImpl implements ProductClient {
     @Override
     public Mono<ProductDto> getProductById(final String productId) {
         return ProductService.client(this.webClient).getById(productId);
+    }
+
+    public Flux<ProductDto> getAllProducts() {
+        return this.webClient
+                .get()
+                .uri("all")
+                .retrieve()
+                .bodyToFlux(ProductDto.class);
     }
 }

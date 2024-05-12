@@ -4,6 +4,6 @@ import com.vinsguru.userclient.dto.request.TransactionRequestDto;
 import com.vinsguru.userclient.dto.response.TransactionResponseDto;
 import reactor.core.publisher.Mono;
 
-public interface UserTransactionClient {
+public interface UserClient {
     Mono<TransactionResponseDto> authorizeTransaction(TransactionRequestDto request);
 }
