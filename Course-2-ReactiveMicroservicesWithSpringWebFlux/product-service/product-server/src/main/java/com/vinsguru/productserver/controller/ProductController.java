@@ -1,7 +1,7 @@
 package com.vinsguru.productserver.controller;
 
 import com.vinsguru.productclient.dto.ProductDto;
-import com.vinsguru.productserver.service.impl.ProductService;
+import com.vinsguru.productserver.services.impl.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -35,13 +35,13 @@ public class ProductController {
                 .map(ResponseEntity::ok);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Mono<ResponseEntity<ProductDto>> insert(@PathVariable String id, @RequestBody Mono<ProductDto> dto) {
         return this.productService.update(id, dto)
                 .map(ResponseEntity::ok);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public Mono<Void> delete(@PathVariable String id) {
         return this.productService.deleteProduct(id);
     }

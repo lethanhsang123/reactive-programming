@@ -1,7 +1,7 @@
-package com.vinsguru.productserver.util;
+package com.vinsguru.productserver.utils;
 
 import com.vinsguru.productclient.dto.ProductDto;
-import com.vinsguru.productserver.entity.Product;
+import com.vinsguru.productserver.entities.Product;
 import org.springframework.beans.BeanUtils;
 
 public class EntityDtoUtil {

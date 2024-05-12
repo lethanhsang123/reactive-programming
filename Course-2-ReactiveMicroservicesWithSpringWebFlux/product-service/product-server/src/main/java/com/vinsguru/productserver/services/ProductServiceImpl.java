@@ -1,9 +1,9 @@
-package com.vinsguru.productserver.service;
+package com.vinsguru.productserver.services;
 
 import com.vinsguru.productclient.dto.ProductDto;
-import com.vinsguru.productserver.repository.ProductRepository;
-import com.vinsguru.productserver.service.impl.ProductService;
-import com.vinsguru.productserver.util.EntityDtoUtil;
+import com.vinsguru.productserver.repositories.ProductRepository;
+import com.vinsguru.productserver.services.impl.ProductService;
+import com.vinsguru.productserver.utils.EntityDtoUtil;
 import org.springframework.data.domain.Range;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

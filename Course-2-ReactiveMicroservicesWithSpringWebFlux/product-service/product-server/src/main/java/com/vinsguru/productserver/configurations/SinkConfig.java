@@ -1,4 +1,4 @@
-package com.vinsguru.productserver.configuration;
+package com.vinsguru.productserver.configurations;
 
 import com.vinsguru.productclient.dto.ProductDto;
 import org.springframework.context.annotation.Bean;

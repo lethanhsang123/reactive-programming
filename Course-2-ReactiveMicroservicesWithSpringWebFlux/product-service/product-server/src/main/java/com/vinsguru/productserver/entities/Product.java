@@ -1,4 +1,4 @@
-package com.vinsguru.productserver.entity;
+package com.vinsguru.productserver.entities;
 
 
 import lombok.Data;

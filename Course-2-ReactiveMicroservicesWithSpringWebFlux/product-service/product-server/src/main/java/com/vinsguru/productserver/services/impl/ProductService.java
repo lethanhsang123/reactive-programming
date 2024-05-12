@@ -1,4 +1,4 @@
-package com.vinsguru.productserver.service.impl;
+package com.vinsguru.productserver.services.impl;
 
 import com.vinsguru.productclient.dto.ProductDto;
 import reactor.core.publisher.Flux;
