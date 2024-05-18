@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-config
+data:
+  SPRING_PROFILE_ACTIVE: "dev"
+  PORT: "8093"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://order-db-service:5432/order-service"
+  SPRING_DATASOURCE_USERNAME: "admin"
+  SPRING_DATASOURCE_PASSWORD: "admin"
+  PRODUCT_SERVICE_URL: "http://product-service:8091/product-service/api/v1"
+  USER_SERVICE_URL: "http://user-service:8092/user-service/api/v1"

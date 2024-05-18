@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /product-service/
+        pathType: Prefix
+        backend:
+          service:
+            name: product-service
+            port:
+              number: 8091
+      - path: /user-service/
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service
+            port:
+              number: 8092
+      - path: /order-service/
+        pathType: Prefix
+        backend:
+          service:
+            name: order-service
+            port:
+              number: 8093

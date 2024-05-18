@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-app
+spec:
+  selector:
+    matchLabels:
+      app: order-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: order-app
+    spec:
+      containers:
+      - name: order-container
+        image: lethanhsang14082001/order-service:latest
+        ports:
+        - name: "order-port"
+          containerPort: 8093
+        envFrom:
+        - configMapRef:
+            name: order-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  selector:
+    app: order-app
+  ports:
+    - port: 8093
+      targetPort: 8093
+  type: LoadBalancer

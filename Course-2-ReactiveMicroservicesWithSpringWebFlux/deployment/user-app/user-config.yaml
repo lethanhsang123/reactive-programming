@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-config
+data:
+  SPRING_DATASOURCE_URL: "r2dbc:postgresql://user-db-service:5432/user-service"
+  SPRING_DATASOURCE_USERNAME: "admin"
+  SPRING_DATASOURCE_PASSWORD: "admin"
+  SPRING_PROFILE_ACTIVE: "dev"
+  PORT: "8092"

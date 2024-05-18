@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: product-config
+data:
+  PRING_PROFILE_ACTIVE: "dev"
+  PORT: "8091"
+  SPRING_DATA_MONGODB_HOST: "product-db-service"
+  SPRING_DATA_MONGODB_PORT: "27017"
+  SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: "admin"
+  SPRING_DATA_MONGODB_USERNAME: "admin"
+  SPRING_DATA_MONGODB_PASSWORD: "admin"
+  SPRING_DATA_MONGODB_DATABASE: "product-service"

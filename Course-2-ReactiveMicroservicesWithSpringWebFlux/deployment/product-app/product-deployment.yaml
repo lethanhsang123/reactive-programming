@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-app
+spec:
+  selector:
+    matchLabels:
+      app: product-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: product-app
+    spec:
+      containers:
+      - name: product-container
+        image: lethanhsang14082001/product-service:latest
+        ports:
+        - name: "product-port"
+          containerPort: 8091
+        envFrom:
+        - configMapRef:
+            name: product-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+spec:
+  selector:
+    app: product-app
+  ports:
+    - port: 8091
+      targetPort: 8091
+  type: LoadBalancer

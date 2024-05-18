@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: product-db
+spec:
+  #serviceName: product-db-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-db
+  template:
+    metadata:
+      labels:
+        app: product-db
+    spec:
+      containers:
+      - name: product-db-container
+        image: mongo:latest
+        ports:
+        - name: "db-port"
+          containerPort: 27017
+        envFrom:
+        - configMapRef:
+            name: product-db-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-db-service
+spec:
+  selector:
+    app: product-db
+  ports:
+    - port: 27017
+      targetPort: 27017
+  type: LoadBalancer
