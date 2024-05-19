@@ -6,24 +6,17 @@ spec:
   rules:
   - http:
       paths:
-      - path: /product-service/
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: product-service
+            name: apisix-gateway
             port:
-              number: 8091
-      - path: /user-service/
-        pathType: Prefix
-        backend:
-          service:
-            name: user-service
-            port:
-              number: 8092
-      - path: /order-service/
-        pathType: Prefix
-        backend:
-          service:
-            name: order-service
-            port:
-              number: 8093
+              number: 80
+                #- path: /product-service/
+                #pathType: Prefix
+                #backend:
+                #service:
+                #name: product-service
+                #port:
+                #number: 8091
