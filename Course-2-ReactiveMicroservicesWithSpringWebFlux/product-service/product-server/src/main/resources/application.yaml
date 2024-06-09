@@ -1,11 +1,16 @@
 server:
   port: 8091
-
+  servlet:
+    context-path: /product-service/api
 spring:
+  application:
+    name: product-service
   data:
     mongodb:
       host: localhost
       port: 27017
       database: product-service
-#      username: admin
-#      password: pass
+      username: admin
+      password: admin
+      authentication-database: admin
+      auto-index-creation: true

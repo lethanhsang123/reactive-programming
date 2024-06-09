@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: order-db
+spec:
+  #serviceName: product-db-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-db
+  template:
+    metadata:
+      labels:
+        app: order-db
+    spec:
+      containers:
+      - name: order-db-container
+        image: postgres:latest
+        ports:
+        - name: "db-port"
+          containerPort: 5432
+        envFrom:
+        - configMapRef:
+            name: order-db-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-db-service
+spec:
+  selector:
+    app: order-db
+  ports:
+    - port: 5432
+      targetPort: 5432
+  type: LoadBalancer

@@ -6,24 +6,20 @@
         <groupId>com.vinsguru</groupId>
         <artifactId>product-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>product-server</artifactId>
+    <name>product-server</name>
     <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <product.client-version>0.0.1-SNAPSHOT</product.client-version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo -->
-        <!--		<dependency>-->
-        <!--			<groupId>de.flapdoodle.embed</groupId>-->
-        <!--			<artifactId>de.flapdoodle.embed.mongo</artifactId>-->
-        <!--			<version>4.12.0</version>-->
-        <!--&lt;!&ndash;			<scope>test</scope>&ndash;&gt;-->
-        <!--		</dependency>-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -37,7 +33,23 @@
         <dependency>
             <groupId>com.vinsguru</groupId>
             <artifactId>product-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${product.client-version}</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

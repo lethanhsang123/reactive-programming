@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: user-db
+spec:
+  #serviceName: product-db-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-db
+  template:
+    metadata:
+      labels:
+        app: user-db
+    spec:
+      containers:
+      - name: user-db-container
+        image: postgres:latest
+        ports:
+        - name: "db-port"
+          containerPort: 5432
+        envFrom:
+        - configMapRef:
+            name: user-db-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-db-service
+spec:
+  selector:
+    app: user-db
+  ports:
+    - port: 5432
+      targetPort: 5432
+  type: LoadBalancer

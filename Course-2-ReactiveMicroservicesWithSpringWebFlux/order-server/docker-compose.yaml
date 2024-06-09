@@ -1,0 +1,51 @@
+version: "3"
+services:
+  order-db:
+    image: postgres
+    container_name: order-db-container
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=order-service
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - my-network
+  order-service:
+    container_name: order-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: order-service:latest
+    environment:
+      - SPRING_PROFILE_ACTIVE=dev
+      - PORT=8093
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://order-db:5432/order-service
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - PRODUCT_SERVICE_URL=http://127.0.0.1:8091/product-service/api/v1
+      - USER_SERVICE_URL=http://127.0.0.1:8092/user-service/api/v1
+    restart: always
+    ports:
+      - "8093:8093"
+    networks:
+      - my-network
+    depends_on:
+      - order-db
+#  pgadmin:
+#    image: dpage/pgadmin4
+#    container_name: pgadmin_user
+#    environment:
+#      - PGADMIN_DEFAULT_EMAIL=admin@gmail.com
+#      - PGADMIN_DEFAULT_PASSWORD=admin
+#    volumes:
+#      - ./docker-volume/pgadmin:/var/lib/pgadmin
+#    ports:
+#      - 9000:80
+volumes:
+  db-data:
+networks:
+  my-network:

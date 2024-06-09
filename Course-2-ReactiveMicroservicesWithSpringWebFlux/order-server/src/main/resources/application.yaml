@@ -1,0 +1,23 @@
+product:
+  service:
+    url: http://127.0.0.1:8091/product-service/api/v1
+user:
+  service:
+    url: http://127.0.0.1:8092/user-service/api/v1
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order-service
+    username: admin
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8093
+  servlet:
+    context-path: /order-service/api
