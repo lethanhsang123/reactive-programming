@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //		"com.sanglt.webflux_patterns.sec01_gateway_aggregator",
 //		"com.sanglt.webflux_patterns.sec02_scatter_gather",
 //		"com.sanglt.webflux_patterns.sec03_orchestrator",
-		"com.sanglt.webflux_patterns.sec04",
+//		"com.sanglt.webflux_patterns.sec04",
+		"com.sanglt.webflux_patterns.sec05_splitter_pattern",
 })
 public class WebfluxPatternsApplication {
 

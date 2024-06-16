@@ -33,3 +33,8 @@ sec04:
     service: http://localhost:7070/sec04/inventory/
   shipping:
     service: http://localhost:7070/sec04/shipping/
+sec05:
+  car:
+    service: http://localhost:7070/sec05/car/reserve/
+  room:
+    service: http://localhost:7070/sec05/room/reserve/
