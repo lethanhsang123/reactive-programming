@@ -24,3 +24,12 @@ sec03:
     service: http://localhost:7070/sec03/inventory/
   shipping:
     service: http://localhost:7070/sec03/shipping/
+sec04:
+  product:
+    service: http://localhost:7070/sec04/product/
+  user:
+    service: http://localhost:7070/sec04/user/
+  inventory:
+    service: http://localhost:7070/sec04/inventory/
+  shipping:
+    service: http://localhost:7070/sec04/shipping/
