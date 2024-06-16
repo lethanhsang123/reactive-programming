@@ -38,3 +38,56 @@ sec05:
     service: http://localhost:7070/sec05/car/reserve/
   room:
     service: http://localhost:7070/sec05/room/reserve/
+sec06:
+  product:
+    service: http://localhost:7070/sec06/product/
+  review:
+    service: http://localhost:7070/sec06/review/
+sec07:
+  product:
+    service: http://localhost:7070/sec07/product/
+  review:
+    service: http://localhost:7070/sec07/review/
+sec08:
+  product:
+    service: http://localhost:7070/sec08/product/
+  review:
+    service: http://localhost:7070/sec08/review/
+resilience4j:
+  circuitbreaker:
+    instances:
+      review-service:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 4
+        minimum-number-of-calls: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state:
+          seconds: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        record-exceptions:
+          - org.springframework.web.reactive.function.client.WebClientRequestException
+          - java.util.concurrent.TimeoutException
+  ratelimiter:
+    instances:
+      calculator-service:
+        limit-refresh-period:
+          seconds: 20
+        limit-for-period: 2
+        timeout-duration:
+          seconds: 5
+      review-service:
+        limit-refresh-period:
+          seconds: 20
+        limit-for-period: 3
+        timeout-duration:
+          nanos: 0
+sec09:
+  product:
+    service: http://localhost:7070/sec09/product/
+  review:
+    service: http://localhost:7070/sec09/review/
+sec10:
+  product:
+    service: http://localhost:7070/sec10/product/
+  review:
+    service: http://localhost:7070/sec10/review/
