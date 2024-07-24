@@ -7,7 +7,7 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        GrpcServer.create(new BankService(), new TransferService())
+        GrpcServer.create(new BankService(), new TransferService(), new com.sanglt.sec09.BankService(), new com.sanglt.sec10.BankService())
                 .start()
                 .await();
 
