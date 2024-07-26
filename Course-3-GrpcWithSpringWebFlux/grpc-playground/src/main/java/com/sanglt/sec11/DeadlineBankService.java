@@ -3,6 +3,7 @@ package com.sanglt.sec11;
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.sanglt.models.sec11.*;
 import com.sanglt.sec06.repository.AccountRepository;
+import io.grpc.Context;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
@@ -47,13 +48,14 @@ public class DeadlineBankService extends BankServiceGrpc.BankServiceImplBase {
             return;
         }
 
-        for (int i = 0; i < (requestedAmount / 10); i++) {
+        for (int i = 0; i < (requestedAmount / 10) && !Context.current().isCancelled() ; i++) {
             var money = Money.newBuilder().setAmount(10).build();
             responseObserver.onNext(money);
             log.info("Money sent {}", money);
             AccountRepository.deductAmount(accountNumber, 10);
             Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
         }
+        log.info("Streaming completed");
         responseObserver.onCompleted();
 
     }
