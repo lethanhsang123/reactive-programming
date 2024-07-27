@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 public class GrpcServer {
 
@@ -21,7 +22,23 @@ public class GrpcServer {
     }
 
     public static GrpcServer create(int port, BindableService... services) {
-        var builder = ServerBuilder.forPort(port);
+        var builder = ServerBuilder.forPort(port)
+                /*
+                .keepAliveTime(10, TimeUnit.SECONDS)
+                The server will send a keep-alive ping to the client every 10 seconds
+                if there are no data packets being sent.
+                 */
+                /*
+                .keepAliveTimeout(1, TimeUnit.SECONDS)
+                After sending a keep-alive ping, the server will wait 10 seconds
+                for a response before considering the connection dead
+                 */
+                /*
+                .maxConnectionIdle(25, TimeUnit.SECONDS)
+                 Specifies the maximum amount of time a connection can remain idle before the server closes it.
+                 This is useful for managing resources and ensuring that idle connections do not consume server resources indefinitely.
+                 */
+                ;
         Arrays.asList(services).forEach(builder::addService);
         return new GrpcServer(builder.build());
     }
