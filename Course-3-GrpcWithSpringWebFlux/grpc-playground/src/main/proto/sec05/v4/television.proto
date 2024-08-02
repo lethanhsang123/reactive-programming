@@ -1,14 +1,21 @@
 syntax = "proto3";
 
-package sec05.v3;
+package sec05.v4;
 
 option java_multiple_files = true;
-option java_package = "com.sanglt.models.sec05.v3";
+option java_package = "com.sanglt.models.sec05.v4";
+
+/*
+  Requirement:
+   -  Add price info
+ */
 
 message Television {
   string brand = 1;
+
   reserved 2;
   reserved "year", "model";
+
   Type type = 3;
   int32 price = 4;
 }

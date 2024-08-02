@@ -10,14 +10,3 @@ message Address {
   string city = 2;
   string state = 3;
 }
-
-message Student {
-  string name = 1;
-  Address address = 2;
-}
-
-message School {
-  int32 id = 1;
-  string name = 2;
-  Address address = 3;
-}

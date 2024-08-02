@@ -5,6 +5,7 @@ package sec03;
 option java_multiple_files = true;
 option java_package = "com.sanglt.models.sec03";
 
+
 message Email {
   string address = 1;
   string password = 2;

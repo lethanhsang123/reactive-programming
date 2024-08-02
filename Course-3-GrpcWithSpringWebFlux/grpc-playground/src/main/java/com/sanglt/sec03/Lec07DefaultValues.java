@@ -1,33 +1,38 @@
 package com.sanglt.sec03;
 
-import com.sanglt.models.common.Address;
-import com.sanglt.models.common.Car;
-import com.sanglt.models.common.Dealer;
-import com.sanglt.models.common.School;
-import com.sanglt.models.sec03.Library;
+import com.sanglt.models.sec03.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Lec07DefaultValues {
 
+    private static final Logger log = LoggerFactory.getLogger(Lec07DefaultValues.class);
+
     public static void main(String[] args) {
         var school = School.newBuilder()
+                .setAddress(Address.newBuilder().build())
                 .build();
 
-        System.out.println("Id: " + school.getId());
-        System.out.println("Name: " + school.getName());
-        System.out.println("Address: " + school.getAddress().getCity());
+        log.info("{}", school.getId());
+        log.info("{}", school.getName());
+        log.info("{}", school.getAddress().getCity());
 
-        System.out.println("IS default: " + school.getAddress().equals(Address.getDefaultInstance()));
+        log.info("is default? : {}", school.getAddress().equals(Address.getDefaultInstance()));
 
-        System.out.println("Has address? " + school.hasAddress());
+        // has
+        log.info("has address? {}", school.hasAddress());
 
+        // collection
         var lib = Library.newBuilder().build();
-        System.out.println("Lib: " + lib.getBooksList());
+        log.info("{}", lib.getBooksList());
 
+        // map
         var dealer = Dealer.newBuilder().build();
-        System.out.println("Dealer: " + dealer.getInventoryMap());
+        log.info("{}", dealer.getInventoryMap());
 
+        // enum
         var car = Car.newBuilder().build();
-        System.out.println("Car: " + car.getBodyStyle());
+        log.info("{}", car.getBodyStyle());
 
     }
 
