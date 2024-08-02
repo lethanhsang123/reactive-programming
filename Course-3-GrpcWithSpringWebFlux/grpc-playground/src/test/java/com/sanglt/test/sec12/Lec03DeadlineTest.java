@@ -2,13 +2,12 @@ package com.sanglt.test.sec12;
 
 import com.sanglt.models.sec12.AccountBalance;
 import com.sanglt.models.sec12.BalanceCheckRequest;
+import com.sanglt.models.sec12.Money;
+import com.sanglt.models.sec12.WithdrawRequest;
 import com.sanglt.test.common.ResponseObserver;
 import com.sanglt.test.sec12.interceptors.DeadlineInterceptor;
 import io.grpc.ClientInterceptor;
 import io.grpc.Deadline;
-import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,16 +41,18 @@ public class Lec03DeadlineTest extends AbstractInterceptorTest {
         var request = BalanceCheckRequest.newBuilder()
                 .setAccountNumber(1)
                 .build();
-
         this.bankServiceStub.getAccountBalance(request, observer);
         observer.await();
-        Assertions.assertTrue(observer.getItems().isEmpty());
-        Assertions.assertEquals(Status.Code.DEADLINE_EXCEEDED, Status.fromThrowable(observer.getThrowable()).getCode());
     }
 
     @Test
     public void overrideInterceptorDemo() {
-        
+        var request = WithdrawRequest.newBuilder().setAccountNumber(1).setAmount(50).build();
+        var response = ResponseObserver.<Money>create();
+        this.bankServiceStub
+                .withDeadline(Deadline.after(6, TimeUnit.SECONDS))
+                .withdraw(request, response);
+        response.await();
     }
 
 

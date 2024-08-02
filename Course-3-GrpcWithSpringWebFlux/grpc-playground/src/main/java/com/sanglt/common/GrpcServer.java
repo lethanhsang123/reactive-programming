@@ -1,5 +1,6 @@
 package com.sanglt.common;
 
+import com.sanglt.sec12.interceptor.GzipResponseInterceptor;
 import io.grpc.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class GrpcServer {
 
@@ -22,6 +24,10 @@ public class GrpcServer {
     }
 
     public static GrpcServer create(int port, BindableService... services) {
+        return create(port, builder -> Arrays.asList(services).forEach(builder::addService));
+    }
+
+    public static GrpcServer create(int port, Consumer<ServerBuilder<?>> consumer) {
         var builder = ServerBuilder.forPort(port)
                 /*
                 .keepAliveTime(10, TimeUnit.SECONDS)
@@ -37,9 +43,8 @@ public class GrpcServer {
                 .maxConnectionIdle(25, TimeUnit.SECONDS)
                  Specifies the maximum amount of time a connection can remain idle before the server closes it.
                  This is useful for managing resources and ensuring that idle connections do not consume server resources indefinitely.
-                 */
-                ;
-        Arrays.asList(services).forEach(builder::addService);
+                 */;
+        consumer.accept(builder);
         return new GrpcServer(builder.build());
     }
 
