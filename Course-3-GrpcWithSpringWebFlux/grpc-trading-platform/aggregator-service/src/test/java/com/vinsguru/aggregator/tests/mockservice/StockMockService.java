@@ -25,7 +25,7 @@ public class StockMockService extends StockServiceGrpc.StockServiceImplBase {
     }
 
     @Override
-    public void getPriceUpdates(Empty request, StreamObserver<PriceUpdate> responseObserver) {
+    public void getPriceUpdate(Empty request, StreamObserver<PriceUpdate> responseObserver) {
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
         for (int i = 1; i <= 5; i++) {
             var priceUpdate = PriceUpdate.newBuilder().setPrice(i).setTicker(Ticker.AMAZON).build();
