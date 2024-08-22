@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package response;
+
+option java_multiple_files = true;
+option java_package = "com.sanglt.order.response";
+
+
+message OrderInformation {
+  int32 order_id = 1;
+  string description = 2;
+}
+
+message OrdersInformation {
+  repeated OrderInformation orders = 1;
+}
