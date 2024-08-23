@@ -16,6 +16,9 @@
 
     <modules>
         <module>proto</module>
+        <module>aggregator-service</module>
+        <module>user-service</module>
+        <module>order-service</module>
     </modules>
 
     <properties>
@@ -40,6 +43,12 @@
             <groupId>net.devh</groupId>
             <artifactId>grpc-client-spring-boot-starter</artifactId>
             <version>${grpc-spring-boot-starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

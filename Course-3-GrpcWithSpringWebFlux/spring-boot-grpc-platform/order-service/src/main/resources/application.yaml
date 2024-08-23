@@ -1,0 +1,11 @@
+grpc:
+  server:
+    port: 9090
+    thread-pool:
+      core-size: 5
+      max-size: 10
+      queue-capacity: 100
+      keep-alive: 60s
+spring:
+  application:
+    name: order-service
