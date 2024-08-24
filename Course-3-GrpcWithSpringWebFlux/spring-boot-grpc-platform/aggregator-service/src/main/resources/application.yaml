@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: aggregator-service
+grpc:
+  client:
+    order-service:
+      address: 'static://127.0.0.1:9091'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: 9093

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package order;
 
+import "google/protobuf/empty.proto";
 import "user-service/request/user-information.proto";
 import "order-service/response/order-information.proto";
 
@@ -12,5 +13,7 @@ option java_package = "com.sanglt.order";
 service OrderService {
 
   rpc GetOrderByUserId(request.UserInformation) returns (response.OrdersInformation);
+
+  rpc GetAllOrder(google.protobuf.Empty) returns (response.OrdersInformation);
 
 }
