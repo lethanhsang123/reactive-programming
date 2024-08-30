@@ -25,4 +25,12 @@ public class OrderServiceImpl implements OrderService {
                 orders.add(new OrderResponse(order.getOrderId(), order.getDescription())));
         return orders;
     }
+    @Override
+    public List<OrderResponse> getOrderByUserId(Integer userId) {
+        List<OrderResponse> orders = new ArrayList<>();
+        com.sanglt.order.response.OrdersInformation ordersInformation = orderClient.getOrderByUserId(userId);
+        ordersInformation.getOrdersOrBuilderList().forEach(order ->
+                orders.add(new OrderResponse(order.getOrderId(), order.getDescription())));
+        return orders;
+    }
 }

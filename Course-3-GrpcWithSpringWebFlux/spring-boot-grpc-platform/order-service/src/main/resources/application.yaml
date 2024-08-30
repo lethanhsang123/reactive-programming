@@ -28,3 +28,6 @@ grpc:
 spring:
   application:
     name: order-service
+logging:
+  level:
+    root: info

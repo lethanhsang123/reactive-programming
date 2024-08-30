@@ -12,3 +12,6 @@ grpc:
       negotiationType: plaintext
   server:
     port: 9093
+logging:
+  level:
+    root: info

@@ -4,6 +4,7 @@ import com.sanglt.aggregator.models.responses.OrderResponse;
 import com.sanglt.aggregator.services.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,12 @@ public class OrderController {
     @GetMapping("/all")
     public ResponseEntity<List<OrderResponse>> getAllOrder() {
         List<OrderResponse> orderResponse = orderService.getAllOrder();
+        return ResponseEntity.ok(orderResponse);
+    }
+
+    @GetMapping("/by-user/{userId}")
+    public ResponseEntity<List<OrderResponse>> getAllOrder(@PathVariable Integer userId) {
+        List<OrderResponse> orderResponse = orderService.getOrderByUserId(userId);
         return ResponseEntity.ok(orderResponse);
     }
 
