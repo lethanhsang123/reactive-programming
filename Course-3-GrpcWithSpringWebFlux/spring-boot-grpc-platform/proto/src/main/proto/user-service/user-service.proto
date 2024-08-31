@@ -4,3 +4,11 @@ package user;
 
 option java_multiple_files = true;
 option java_package = "com.sanglt.user";
+
+import "user-service/request/user-information.proto";
+
+service UserService {
+
+  rpc Chat(stream user.request.Message) returns ( stream request.Message);
+
+}

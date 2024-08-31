@@ -1,11 +1,11 @@
-package com.sanglt.order.services;
+package com.sanglt.order.services.impl;
 
 import com.google.protobuf.Empty;
 import com.sanglt.common.ErrorCode;
 import com.sanglt.order.OrderServiceGrpc;
 import com.sanglt.order.response.OrderInformation;
 import com.sanglt.order.response.OrdersInformation;
-import com.sanglt.order.services.impl.OrderService;
+import com.sanglt.order.services.OrderService;
 import com.sanglt.order.utils.Constants;
 import com.sanglt.order.utils.GRPCMetadataUtils;
 import com.sanglt.user.requests.UserInformation;

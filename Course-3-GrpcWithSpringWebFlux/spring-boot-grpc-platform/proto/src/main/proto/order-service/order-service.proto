@@ -12,7 +12,7 @@ option java_package = "com.sanglt.order";
 
 service OrderService {
 
-  rpc GetOrderByUserId(request.UserInformation) returns (response.OrdersInformation);
+  rpc GetOrderByUserId(user.request.UserInformation) returns (response.OrdersInformation);
 
   rpc GetAllOrder(google.protobuf.Empty) returns (response.OrdersInformation);
 
