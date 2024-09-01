@@ -2,7 +2,7 @@ package com.sanglt.aggregator.clients;
 
 import com.google.protobuf.Empty;
 import com.sanglt.order.OrderServiceGrpc;
-import com.sanglt.user.requests.UserInformation;
+import com.sanglt.user.request.UserInformation;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.slf4j.Logger;

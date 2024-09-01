@@ -1,11 +1,29 @@
 grpc:
   server:
-    port: 9091
+    port: 9092
+    # Thread Pool Configuration
     thread-pool:
-      core-size: 5
-      max-size: 10
-      queue-capacity: 100
-      keep-alive: 60
+      core-size: 5 # The core number of threads kept in the pool.
+      max-size: 10 # The maximum number of threads allowed in the pool.
+      queue-capacity: 100 # The capacity of the queue to hold requests before they are executed by a thread.
+      keep-alive: 60 # How long a thread can remain idle before being terminated.
+
+    # Basic configuration
+    max-inbound-message-size: 4194304 # 4MB Sets the maximum size of incoming gRPC messages.
+    max-inbound-metadata-size: 8192 # 8KB Sets the maximum size of incoming metadata.
+
+    # Health and Reflection Services
+    # Health Service: Provides a way to check the health status of the gRPC server, often used by load balancers or monitoring systems.
+    # Reflection Service: Allows clients to discover services and methods at runtime, useful in development environments.
+    reflection-service-enabled: true # Enables the gRPC reflection service, useful for clients that need to discover services dynamically
+    healthServiceEnabled: true # Enables the gRPC health check service.
+
+    # Advanced Connection Management
+    enable-keep-alive: true
+    keep-alive-time: 60 # How often the server sends keepalive pings if the connection is idle
+    keep-alive-timeout: 20 # How long the server waits for a ping response before closing the connection.
+    permit-keep-alive-without-calls: true # Allows keepalive pings even when there are no active RPCs
+    permit-keep-alive-time: 5 # The frequency at which pings are sent when there are no active calls.
 spring:
   application:
     name: user-service

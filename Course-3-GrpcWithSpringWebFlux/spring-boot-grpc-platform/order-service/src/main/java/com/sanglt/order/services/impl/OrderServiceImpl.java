@@ -8,7 +8,7 @@ import com.sanglt.order.response.OrdersInformation;
 import com.sanglt.order.services.OrderService;
 import com.sanglt.order.utils.Constants;
 import com.sanglt.order.utils.GRPCMetadataUtils;
-import com.sanglt.user.requests.UserInformation;
+import com.sanglt.user.request.UserInformation;
 import io.grpc.Metadata;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;

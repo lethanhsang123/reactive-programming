@@ -5,10 +5,12 @@ package user;
 option java_multiple_files = true;
 option java_package = "com.sanglt.user";
 
+import "google/protobuf/timestamp.proto";
 import "user-service/request/user-information.proto";
+import "user-service/response/user-response.proto";
 
 service UserService {
 
-  rpc Chat(stream user.request.Message) returns ( stream request.Message);
+  rpc Chat(stream request.MessageRequest) returns (stream response.MessageResponse);
 
 }
