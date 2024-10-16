@@ -1,4 +1,4 @@
-package com.sanzee.reactive_kafka_playground.sec01;
+package com.sanzee.reactive_kafka_playground.sec03;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -10,12 +10,9 @@ import reactor.kafka.receiver.ReceiverOptions;
 import java.util.List;
 import java.util.Map;
 
-/*
-    goal: To demo a simple kafka consumer using reactor kafka
- */
-public class Lec01KafkaConsumer {
+public class KafkaConsumer {
 
-    private static final Logger log = LoggerFactory.getLogger(Lec01KafkaConsumer.class);
+    private static final Logger log = LoggerFactory.getLogger(KafkaConsumer.class);
 
     public static void main(String[] args) {
 

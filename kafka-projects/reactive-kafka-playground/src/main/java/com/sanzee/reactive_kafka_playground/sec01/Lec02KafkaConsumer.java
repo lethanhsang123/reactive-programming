@@ -13,9 +13,9 @@ import java.util.Map;
 /*
     goal: To demo a simple kafka consumer using reactor kafka
  */
-public class Lec01KafkaConsumer {
+public class Lec02KafkaConsumer {
 
-    private static final Logger log = LoggerFactory.getLogger(Lec01KafkaConsumer.class);
+    private static final Logger log = LoggerFactory.getLogger(Lec02KafkaConsumer.class);
 
     public static void main(String[] args) {
 
@@ -23,7 +23,7 @@ public class Lec01KafkaConsumer {
                 ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
-                ConsumerConfig.GROUP_ID_CONFIG, "demo-group",
+                ConsumerConfig.GROUP_ID_CONFIG, "inventory-service-group",
                 ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest",
                 ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "1"
         );
@@ -34,6 +34,7 @@ public class Lec01KafkaConsumer {
         KafkaReceiver.create(option)
                 .receive()
                 .doOnNext(r -> log.info("key: {}, value: {}", r.key(), r.value()))
+                .doOnNext(r -> r.receiverOffset().acknowledge())
                 .subscribe();
 
     }
