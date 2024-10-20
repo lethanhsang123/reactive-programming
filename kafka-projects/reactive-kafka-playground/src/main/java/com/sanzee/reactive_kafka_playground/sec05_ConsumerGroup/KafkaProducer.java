@@ -1,4 +1,4 @@
-package com.sanzee.reactive_kafka_playground.sec03;
+package com.sanzee.reactive_kafka_playground.sec05_ConsumerGroup;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -14,35 +14,30 @@ import java.time.Duration;
 import java.util.Map;
 
 /*
-    goal: To produce and consume millions events
+    goal: To demo partition re-balancing. Ensure that topic has multiple partitions.
  */
 public class KafkaProducer {
 
     private static final Logger log = LoggerFactory.getLogger(KafkaProducer.class);
 
     public static void main(String[] args) {
-        var producerConfig = Map.<String, Object>of(
+        var producerConfig = Map.< String, Object >of(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
                 ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class
         );
 
-        var options = SenderOptions.<String, String>create(producerConfig)
-                .maxInFlight(10_000);   // Is a parameter that controls how many unacknowledged records (in-flight records) can be processed concurrently.
+        var options = SenderOptions.<String, String>create(producerConfig);
 
-        var flux = Flux.range(1, 1_000_000)
+        var flux = Flux.interval(Duration.ofMillis(50))
+                .take(10_000)
                 .map(i -> new ProducerRecord<>("order-events", i.toString(), "order-" + i))
                 .map(pr -> SenderRecord.create(pr, pr.key()));
-
-        var start = System.currentTimeMillis();
 
         var sender = KafkaSender.create(options);
         sender.send(flux)
                 .doOnNext(r -> log.info("Correlation id: {}", r.correlationMetadata()))
-                .doOnComplete(() -> {
-                    log.info("Total time taken: {} ms", (System.currentTimeMillis() - start));
-                    sender.close();
-                })
+                .doOnComplete(sender::close)
                 .subscribe();
 
     }

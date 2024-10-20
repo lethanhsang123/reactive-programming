@@ -1,4 +1,4 @@
-package com.sanzee.reactive_kafka_playground.sec03;
+package com.sanzee.reactive_kafka_playground.sec03_MaxInFlight;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
